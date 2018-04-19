@@ -17,3 +17,13 @@
 .clear {
 	clear: left;
 }
+
+.card-count-bar {
+	background-color: green;
+	width: 170px;
+	height: 20px;
+}
+
+.card-count-bar.low {
+	background-color: red;
+}

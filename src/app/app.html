@@ -49,25 +49,30 @@
 			<div class="ui grid">
 				<div class="row">
 					<div class="seven wide middle aligned column">
+						<!-- <ng-template #cardCount>
+							<h2>You have {{ getCardCount() }} cards left.</h2>
+						</ng-template> -->
 						<button (click)="pickCard()" [disabled]="!getCardCount()" class="ui big fluid button">
-							Pick a card! You have {{ getCardCount() }} cards left.
+							Pick a card!
 						</button>
-					</div>
-					<div class="one wide bottom aligned column">
-						<div class="life-bar"></div>
-					</div>
-					<div class="seven wide middle aligned column">
+						<div *ngIf="getCardCount() !== 52" class="row">
+							<div>
+								<h3>You have {{ getCardCount() }} cards left.</h3>
+								</div>
+<div class="card-count-bar" [ngStyle]="{ width: cardBarHeight() + 'px'}" [ngClass]="cardBarHeight() < 25 ? 'low' : ''">
+							</div>
+						</div>
+						<div class="seven wide middle aligned column">
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div *ngFor="let card of cards" class="ui left floated compact center aligned segment card-in-hand">
-			<button class="ui large button" (click)="returnCardToDeck(card)">
-				{{card?.suit + card?.rank}}
-			</button>
+			<div *ngFor="let card of cards" class="ui left floated compact center aligned segment card-in-hand">
+				<button class="ui large button" (click)="returnCardToDeck(card)">
+					{{card?.suit + card?.rank}}
+				</button>
+			</div>
 		</div>
+		<div class="clear"></div>
 	</div>
-
-	<div class="clear"></div>
-</div>

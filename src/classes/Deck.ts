@@ -2,6 +2,7 @@ import ICard from "./../interfaces/ICard";
 
 export default class Deck {
 	private _cards: ICard[];
+	private maximumNumberOfCards:number = 52;
 	private readonly _cardRanks: string[] = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 	private readonly _cardSuits: string[] = ["♡", "♤", "♧", "♢"];
 
@@ -37,11 +38,15 @@ export default class Deck {
 	}
 
 	public returnCardToDeck(card: ICard): void {
-		this._cards.push(card);
+		this._cards.push(card); //pushes the card value back into the deck via Icard.rank Icard.suits model values
 		//this._consoleCardCount();
 	}
 
 	public getCardCount() {
 		return this._cards.length;
+	}
+
+	public getTotalCardCount() {
+		return this.maximumNumberOfCards;
 	}
 }
