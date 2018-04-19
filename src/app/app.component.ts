@@ -23,4 +23,23 @@ export class AppComponent implements OnInit {
 		console.log(this.drawCard);
 		this.cards.push(this.drawCard);
 	}
+
+	getCardCount() {
+		return this.deck.getCardCount();
+	}
+
+	returnCardToDeck(card) {
+		this.deck.returnCardToDeck(card);
+		this.cards.splice(this.cards.indexOf(card), 1);
+	}
+
+	public getLastPickedCardLabel(): string {
+
+		if (!this.cards.length) return; /// will return if no length left to cards.. saftey net
+
+		const lastCardPicked = this.cards[0]; // grabs the index of last card picked in array
+
+		return lastCardPicked.rank + " of " + lastCardPicked.suit; // returns the card info
+	}
 }
+

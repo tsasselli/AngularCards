@@ -49,8 +49,8 @@
 			<div class="ui grid">
 				<div class="row">
 					<div class="seven wide middle aligned column">
-						<button (click)="pickCard()" class="ui big fluid button">
-							Pick a card!
+						<button (click)="pickCard()" [disabled]="!getCardCount()" class="ui big fluid button">
+							Pick a card! You have {{ getCardCount() }} cards left.
 						</button>
 					</div>
 					<div class="one wide bottom aligned column">
@@ -63,12 +63,8 @@
 		</div>
 
 		<div *ngFor="let card of cards" class="ui left floated compact center aligned segment card-in-hand">
-			<button class="ui large button">
-				<h2>You last drew: {{card?.suit + card?.rank}}</h2>
-				<span class="return">
-					RETURN
-					<i class="reply icon"></i>
-				</span>
+			<button class="ui large button" (click)="returnCardToDeck(card)">
+				{{card?.suit + card?.rank}}
 			</button>
 		</div>
 	</div>
