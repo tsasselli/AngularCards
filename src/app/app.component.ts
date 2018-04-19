@@ -44,10 +44,10 @@ export class AppComponent implements OnInit {
 		return lastCardPicked.rank + " of " + lastCardPicked.suit; // returns the card info
 	}
 
-	//creates a function that sets and manipulates the height of the bar based off of card count divided by total
-	cardBarHeight() {
-		const initalHeight = 170
-		return this.deck.getCardCount() / this.deck.getTotalCardCount() * initalHeight;
+	//creates a function that sets and manipulates the width of the bar based off of card count divided by total
+	cardBarWidth() {
+		const initalWidth = 170
+		return this.deck.getCardCount() / this.deck.getTotalCardCount() * initalWidth;
 	}
 
 	resetDeck() {
