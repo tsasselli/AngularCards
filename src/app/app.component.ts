@@ -9,28 +9,30 @@ import ICard from "../interfaces/ICard";
 export class AppComponent implements OnInit {
 	// write your component code here; create the properties and methods you need to get the job
 	// done as described in "app.html"; start by importing modules you need such as "./../classes/Deck"
-	public deck: Deck;
-	public drawCard: ICard;
-	public cards: ICard[];
+	public deck: Deck; // refrences the Deck.ts file
+	public drawCard: ICard; // ref the Icard model
+	public cards: ICard[]; // makes an array for that model so we can add the cards when build deck gets ran
 
 	public ngOnInit(): void {
-		this.deck = new Deck
+		// triggers the build of a new deck, it gets build by the Deck.ts file's constructor runing _buildDeck
+		this.deck = new Deck 
 		this.cards = [];
 	}
 
 	public pickCard() {
-		this.drawCard = this.deck.drawCard();
-		console.log(this.drawCard);
-		this.cards.push(this.drawCard);
+		this.drawCard = this.deck.drawCard(); // use deck to access Deck.ts and get the drawCard method
+		console.log(this.drawCard); 
+		this.cards.push(this.drawCard); // push the value of drawCard into the cards array
 	}
 
 	getCardCount() {
-		return this.deck.getCardCount();
+		// return a card count so we can use this in the HTML file to check if any are left and return a count to the user
+		return this.deck.getCardCount(); 
 	}
 
 	returnCardToDeck(card) {
-		this.deck.returnCardToDeck(card);
-		this.cards.splice(this.cards.indexOf(card), 1);
+		this.deck.returnCardToDeck(card); // gets method from Deck.ts to return the card to the deck
+		this.cards.splice(this.cards.indexOf(card), 1); // gets the index of the current card and deletes 1
 	}
 
 	public getLastPickedCardLabel(): string {
