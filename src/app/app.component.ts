@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
 	//creates a function that sets and manipulates the width of the bar based off of card count divided by total
 	cardBarWidth() {
 		const initalWidth = 170
-		return this.deck.getCardCount() / 52 * initalWidth;
+		return this.deck.getCardCount() / this.deck.getTotalCardCount() * initalWidth;
 	}
 
 	resetDeck() {
