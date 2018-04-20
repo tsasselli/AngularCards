@@ -56,10 +56,12 @@
 							<div>
 								<h3>You have {{ getCardCount() }} cards left.</h3>
 							</div>
-							<div class="card-count-bar" [ngStyle]="{ width: cardBarWidth() + 'px'}" [ngClass]="cardBarWidth() < 25 ? 'low' : ''">
+							<div class="card-count-bar" [ngStyle]="{ width: cardCountBarWidth() + 'px'}" [ngClass]="cardCountBarWidth() < 50 ? 'low' : ''">
 							</div>
-							<div *ngIf="getCardCount() == 0" >
-								<button class="ui big fluid button" (click)="resetDeck()" > Reset Deck</button>
+							<div *ngIf="getCardCount() == 0">
+								<button class="ui big fluid button" (click)="resetDeck()">
+									Reset Deck
+								</button>
 							</div>
 						</div>
 						<div class="seven wide middle aligned column">
@@ -69,6 +71,7 @@
 			</div>
 
 			<div *ngFor="let card of cards" class="ui left floated compact center aligned segment card-in-hand">
+				<img>
 				<button class="ui large button button-fill" (click)="returnCardToDeck(card)">
 					{{card?.suit + card?.rank}}
 				</button>
