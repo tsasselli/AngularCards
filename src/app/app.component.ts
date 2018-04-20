@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
 	public ngOnInit(): void {
 		// triggers the build of a new deck, it gets build by the Deck.ts file's constructor runing _buildDeck
-		this.deck = new Deck 
+		this.deck = new Deck;
 		this.cards = [];
 	}
 
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 		this.cards.splice(this.cards.indexOf(card), 1); // gets the index of the current card and deletes 1
 	}
 
-	public getLastPickedCardLabel(): string {
+	public getLastPickedCard(): string {
 
 		if (!this.cards.length) return; /// will return if no length left to cards.. saftey net
 
@@ -47,11 +47,12 @@ export class AppComponent implements OnInit {
 	//creates a function that sets and manipulates the width of the bar based off of card count divided by total
 	cardBarWidth() {
 		const initalWidth = 170
-		return this.deck.getCardCount() / this.deck.getTotalCardCount() * initalWidth;
+		return this.deck.getCardCount() / 52 * initalWidth;
 	}
 
 	resetDeck() {
-		this.cards = [] 
+		this.cards = [];
+		this.deck = new Deck;
 	}
 }
 
